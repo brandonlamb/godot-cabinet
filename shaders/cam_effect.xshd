@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource_file type="CanvasItemShader" subresource_count="1" version="2.1" version_name="Godot Engine v2.1.alpha.custom_build">
+	<main_resource>
+		<dictionary name="_code" shared="false">
+			<string> "fragment" </string>
+			<string> "/*&#000a;The MIT License (MIT)&#000a;&#000a;Copyright (c) 2014 Justin Saunders&#000a;&#000a;Permission is hereby granted, free of charge, to any person obtaining a copy&#000a;of this software and associated documentation files (the &quot;Software&quot;), to deal&#000a;in the Software without restriction, including without limitation the rights&#000a;to use, copy, modify, merge, publish, distribute, sublicense, and/or sell&#000a;copies of the Software, and to permit persons to whom the Software is&#000a;furnished to do so, subject to the following conditions:&#000a;&#000a;The above copyright notice and this permission notice shall be included in&#000a;all copies or substantial portions of the Software.&#000a;&#000a;THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR&#000a;IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,&#000a;FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE&#000a;AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER&#000a;LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,&#000a;OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN&#000a;THE SOFTWARE.&#000a;*/&#000a;&#000a;// distance from center of image, used to adjust blur&#000a;vec2 uv = SCREEN_UV;&#000a;float d = length(uv - vec2(0.5,0.5));&#000a;&#0009;&#000a;// final color&#000a;vec3 col;&#000a;col = texscreen( uv ).rgb;&#000a;&#000a;// scanline&#000a;float scanline = sin((uv.y)*200.0-(TIME*10))*0.04;&#000a;col -= scanline;&#000a;&#0009;&#000a;// vignette&#000a;col *= min(max((1.0 - d) * 2, 0.0), 1.0);&#000a;&#000a;col.g = (col.r+col.g+col.b)/3;&#000a;col.r = 0;&#000a;col.b = 0;&#000a;&#000a;COLOR.rgb = col;" </string>
+			<string> "fragment_ofs" </string>
+			<int> 0 </int>
+			<string> "light" </string>
+			<string> "" </string>
+			<string> "light_ofs" </string>
+			<int> 0 </int>
+			<string> "vertex" </string>
+			<string> "" </string>
+			<string> "vertex_ofs" </string>
+			<int> 0 </int>
+		</dictionary>
+
+	</main_resource>
+</resource_file>
